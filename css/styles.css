@@ -15,15 +15,15 @@
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   font-family: var(--primary-font);
   color: var(--primary-black-color);
   font-size: 14px;
   background-color: var(--primary-white-color);
   line-height: 1.5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 main {
@@ -63,10 +63,17 @@ img {
 }
 
 .page-header {
+  position: sticky;
+  top: 0;
   margin-bottom: 20px;
   padding-top: 16px;
   padding-bottom: 16px;
   background-color: #e0e0e0;
+  background-image: linear-gradient(
+    to right,
+    var(--primary-accent-color),
+    var(--primary-black-color)
+  );
 }
 
 .page-header .container {
@@ -83,27 +90,56 @@ img {
 .page-nav .link {
   display: block;
   padding: 4px 8px;
-  color: var(--primary-accent-color);
+  color: var(--primary-white-color);
   text-decoration: none;
   font-size: 14px;
   text-transform: uppercase;
 }
 
 .page-nav .link:hover,
-.page-nav .link:focus {
-  color: var(--secondary-accent-color);
-}
-
+.page-nav .link:focus,
 .page-nav .link:active {
   color: var(--active-link-color);
 }
 
-.page-title {
+.hero {
+  padding: 48px;
+  border-radius: 12px;
+  background-color: var(--primary-black-color);
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 255, 0.15),
+      rgba(0, 0, 255, 0.15)
+    ),
+    url(https://cdn.pixabay.com/photo/2016/11/22/22/24/adult-1850925_1280.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  color: var(--primary-white-color);
+}
+
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin-bottom: 24px;
   font-size: 32px;
-  text-align: center;
   line-height: 1.333;
   letter-spacing: 3px;
+}
+
+.hero-title::before,
+.hero-title::after {
+  content: "";
+  width: 100px;
+  height: 2px;
+  background-color: var(--primary-white-color);
+}
+
+.hero-title:hover::before,
+.hero-title:hover::after {
+  background-color: var(--primary-accent-color);
 }
 
 .section {
@@ -121,19 +157,37 @@ img {
   letter-spacing: 1px;
 }
 
+.section-text {
+  line-height: 1.5;
+  text-indent: 24px;
+}
+
 .club-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .club-list .item {
-  flex-basis: calc((100% - 24px) / 3);
+  position: relative;
+  flex-basis: calc((100% - 32px) / 3);
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+.club-list .content {
+  padding: 8px;
 }
 
 .club-list .title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 12px;
+  color: var(--primary-white-color);
+  background-color: var(--secondary-accent-color);
   margin-bottom: 8px;
   font-size: 16px;
   text-transform: uppercase;
@@ -154,6 +208,28 @@ img {
 
 .club-list .link:active {
   color: var(--active-link-color);
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefits li {
+  flex-basis: calc((100% - 32px) / 3);
+}
+
+.downloads {
+  margin-top: 20px;
+}
+
+.downloads li:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .downloads .link {
@@ -181,34 +257,36 @@ img {
 .page-footer .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .copyright-text {
+  flex-basis: 300px;
   color: var(--primary-white-color);
 }
 
 .social-links {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
+  align-self: flex-end;
 }
 
-.benefits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 20px;
-  margin-bottom: 0;
-  padding: 0;
-  list-style: none;
+.manager-chat-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  padding: 12px 16px;
+  border: none;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
+  background-color: var(--primary-accent-color);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
 
-.benefits .item {
-  flex-basis: calc((100% - 32px) / 3);
-}
-
-.downloads {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 20px;
+.manager-chat-btn:hover {
+  background-color: var(--secondary-accent-color);
 }
